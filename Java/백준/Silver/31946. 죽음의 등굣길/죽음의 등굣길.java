@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Main {
-    public static boolean memo[][];
     public static boolean visited[][];
 
     public static void main(String[] args) {
@@ -9,7 +8,6 @@ public class Main {
         int x = scanner.nextInt();
         int y = scanner.nextInt();
         int[][] field = new int[x][y];
-        memo = new boolean[x][y];
         visited = new boolean[x][y];
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
