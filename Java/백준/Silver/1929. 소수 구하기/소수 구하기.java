@@ -2,10 +2,10 @@ import java.io.*;
 
 public class Main {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     static boolean[] prime;
 
     public static void main(String[] args) throws IOException {
+        StringBuilder sb = new StringBuilder();
         String[] input = br.readLine().split(" ");
         int a = Integer.parseInt(input[0]);
         int b = Integer.parseInt(input[1]);
@@ -14,10 +14,10 @@ public class Main {
 
         for (int i = a; i <= b; i++) {
             if (!prime[i]) {
-                bw.write(i + "\n");
+                sb.append(i).append("\n");
             }
         }
-        bw.flush();
+        System.out.println(sb);
     }
 
     private static void primeNumber(int max) {
