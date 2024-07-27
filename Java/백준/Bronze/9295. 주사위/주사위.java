@@ -1,13 +1,16 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int size = scan.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int size = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < size; i++) {
-            int a = scan.nextInt();
-            int b = scan.nextInt();
+            String[] input = br.readLine().split(" ");
+            int a = Integer.parseInt(input[0]);
+            int b = Integer.parseInt(input[1]);
 
             System.out.println("Case " + (i + 1) + ": " + (a + b));
         }
