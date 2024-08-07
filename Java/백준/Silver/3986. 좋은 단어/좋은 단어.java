@@ -8,9 +8,9 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int tc = Integer.parseInt(br.readLine());
         int count = 0;
-        Stack<Character> stack = new Stack<>();
 
         for (int i = 0; i < tc; i++) {
+            Stack<Character> stack = new Stack<>();
             String s = br.readLine();
             for (int j = 0; j < s.length(); j++) {
                 char c = s.charAt(j);
@@ -24,7 +24,6 @@ public class Main {
             if (stack.isEmpty()) {
                 count++;
             }
-            stack.clear();
         }
 
         System.out.println(count);
