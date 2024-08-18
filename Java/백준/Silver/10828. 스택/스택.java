@@ -8,6 +8,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int tc = Integer.parseInt(br.readLine());
         Stack<Integer> stack = new Stack<>();
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < tc; i++) {
             String[] s = br.readLine().split(" ");
@@ -17,29 +18,30 @@ public class Main {
                     break;
                 case "pop":
                     if (stack.isEmpty()) {
-                        System.out.println(-1);
+                        sb.append(-1).append("\n");
                         break;
                     }
-                    System.out.println(stack.pop());
+                    sb.append(stack.pop()).append("\n");
                     break;
                 case "size":
-                    System.out.println(stack.size());
+                    sb.append(stack.size()).append("\n");
                     break;
                 case "empty":
                     if (stack.isEmpty()) {
-                        System.out.println(1);
+                        sb.append(1).append("\n");
                         break;
                     }
-                    System.out.println(0);
+                    sb.append(0).append("\n");
                     break;
                 case "top":
                     if (stack.isEmpty()) {
-                        System.out.println(-1);
+                        sb.append(-1).append("\n");
                         break;
                     }
-                    System.out.println(stack.peek());
+                    sb.append(stack.peek()).append("\n");
                     break;
             }
         }
+        System.out.println(sb);
     }
 }
