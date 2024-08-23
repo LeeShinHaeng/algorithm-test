@@ -15,8 +15,6 @@ public class Main {
             sum += dwarfs[i];
         }
 
-        Arrays.sort(dwarfs);
-
         for (int i = 0; i < dwarfs.length - 1; i++) {
             for (int j = i + 1; j < dwarfs.length; j++) {
                 int tmp = dwarfs[i] + dwarfs[j];
