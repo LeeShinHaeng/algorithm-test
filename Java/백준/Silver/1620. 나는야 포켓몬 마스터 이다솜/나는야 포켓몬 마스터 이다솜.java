@@ -1,32 +1,35 @@
+import java.io.*;
 import java.util.HashMap;
-import java.util.Scanner;
+import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) {
-        pokemon();
-    }
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    public static void pokemon() {
-        Scanner scanner = new Scanner(System.in);
-        int dSize = scanner.nextInt();
-        int qSize = scanner.nextInt();
-        String input;
-        HashMap<String, String> dictMap = new HashMap<>();
+        String[] s = br.readLine().split(" ");
+        int N = Integer.parseInt(s[0]);
+        int M = Integer.parseInt(s[1]);
 
-        for (int i = 0; i < dSize; i++) {
-            input = scanner.next();
-            dictMap.put(input, String.valueOf(i + 1));
-            dictMap.put(String.valueOf(i + 1), input);
+        Map<String, Integer> nameToNumber = new HashMap<>();
+        Map<Integer, String> numberToName = new HashMap<>();
+
+        for (int i = 1; i <= N; i++) {
+            String input = br.readLine();
+            nameToNumber.put(input, i);
+            numberToName.put(i, input);
         }
 
-        for (int i = 0; i < qSize; i++) {
-            String question = scanner.next();
+        for (int i = 0; i < M; i++) {
+            String input = br.readLine();
             try {
-                Integer.parseInt(question);
-                System.out.println(dictMap.get(question));
+                int number = Integer.parseInt(input);
+                bw.write(numberToName.get(number));
             } catch (Exception e) {
-                System.out.println(dictMap.get(question));
+                bw.write(nameToNumber.get(input) + "");
             }
+            bw.newLine();
         }
+        bw.flush();
     }
 }
