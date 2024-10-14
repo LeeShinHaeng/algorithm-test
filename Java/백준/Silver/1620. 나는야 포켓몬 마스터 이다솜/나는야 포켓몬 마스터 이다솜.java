@@ -23,8 +23,7 @@ public class Main {
         for (int i = 0; i < M; i++) {
             String input = br.readLine();
             try {
-                int number = Integer.parseInt(input);
-                bw.write(numberToName.get(number));
+                bw.write(numberToName.get(Integer.parseInt(input)));
             } catch (Exception e) {
                 bw.write(nameToNumber.get(input) + "");
             }
