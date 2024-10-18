@@ -1,52 +1,33 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        numberCard();
-    }
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    private static void numberCard() {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int[] had = new int[n];
+        int n = Integer.parseInt(br.readLine());
+        String cards = br.readLine();
+        StringTokenizer st = new StringTokenizer(cards);
 
-        for (int i = 0; i < n; i++) {
-            had[i] = scanner.nextInt();
+        Set<Integer> cardSet = new HashSet<>();
+        while (st.hasMoreTokens()) {
+            cardSet.add(Integer.parseInt(st.nextToken()));
         }
 
-        Arrays.sort(had);
+        int m = Integer.parseInt(br.readLine());
+        String inputs = br.readLine();
+        st = new StringTokenizer(inputs);
 
-        int m = scanner.nextInt();
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < m; i++) {
-            result.append(binarySearch(had, n, scanner.nextInt()) + " ");
-        }
-
-        System.out.println(result);
-    }
-
-    public static int binarySearch(int[] cards, int N, int search) {
-        int first = 0;
-        int last = N - 1;
-        int mid = 0;
-
-        while (first <= last) {
-            mid = (first + last) / 2;
-
-            if (cards[mid] == search) {
-                return 1;
-            }
-
-            if (cards[mid] < search) {
-                first = mid + 1;
+        StringBuilder sb = new StringBuilder();
+        while (st.hasMoreTokens()) {
+            int input = Integer.parseInt(st.nextToken());
+            if (cardSet.contains(input)) {
+                sb.append("1 ");
             } else {
-                last = mid - 1;
+                sb.append("0 ");
             }
         }
 
-        return 0;
+        System.out.println(sb.substring(0, sb.length() - 1));
     }
 }
-
