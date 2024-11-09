@@ -1,0 +1,12 @@
+class Solution {
+    public int solution(int a, int b) {
+        String as = String.valueOf(a);
+        String bs = String.valueOf(b);
+        
+        int x = Integer.parseInt(as + bs);
+        int y = 2 * a * b;
+        
+        int answer = x >= y ? x : y;
+        return answer;
+    }
+}
