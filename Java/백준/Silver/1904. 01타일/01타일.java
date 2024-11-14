@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 class Main {
-	static Long[] fibo;
+	static int[] fibo;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -13,10 +13,9 @@ class Main {
 	}
 
 	private static void initFibo() {
-		fibo = new Long[1_000_001];
-		fibo[0] = 0L;
-		fibo[1] = 1L;
-		fibo[2] = 2L;
+		fibo = new int[1_000_001];
+		fibo[1] = 1;
+		fibo[2] = 2;
 		for (int i = 3; i <= 1_000_000; i++) {
 			fibo[i] = (fibo[i - 1] + fibo[i - 2] ) % 15746;
 		}
