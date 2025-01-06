@@ -3,12 +3,28 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Main {
+	static int MOD = 1_234_567;
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
+		int[][] dp = initializeDP();
+
+		StringBuilder sb = new StringBuilder();
+		for (int t = 0; t < T; t++) {
+			int num = Integer.parseInt(br.readLine());
+			int count = 0;
+			for (int i = 0; i < 10; i++) {
+				count = (count + dp[num][i]) % MOD;
+			}
+
+			sb.append(count).append("\n");
+		}
+		System.out.println(sb);
+	}
+
+	private static int[][] initializeDP() {
 		int[][] dp = new int[1001][10];
 		Arrays.fill(dp[1], 1);
-		int MOD = 1_234_567;
 
 		for (int i = 2; i <= 1000; i++) {
 			dp[i][0] = dp[i - 1][7] % MOD;
@@ -22,10 +38,7 @@ public class Main {
 			dp[i][8] = (dp[i - 1][5] + dp[i - 1][7] + dp[i - 1][9]) % MOD;
 			dp[i][9] = (dp[i - 1][6] + dp[i - 1][8]) % MOD;
 		}
-		
-		for (int t = 0; t < T; t++) {
-			int num = Integer.parseInt(br.readLine());
-			System.out.println((dp[num][0] + dp[num][1] + dp[num][2] + dp[num][3] + dp[num][4] + dp[num][5] + dp[num][6] + dp[num][7] + dp[num][8] + dp[num][9]) % MOD);
-		}
+
+		return dp;
 	}
 }
