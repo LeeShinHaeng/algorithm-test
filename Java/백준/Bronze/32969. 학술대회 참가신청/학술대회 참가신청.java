@@ -19,13 +19,17 @@ public class Main {
 		set2.add("society");
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String[] input = br.readLine().split(" ");
+		String input = br.readLine();
 
-		for (String s : input) {
-			if (set1.contains(s)) {
+		for (String s : set1) {
+			if (input.contains(s)) {
 				System.out.println("digital humanities");
 				return;
-			} else if (set2.contains(s)) {
+			}
+		}
+
+		for (String s : set2) {
+			if (input.contains(s)) {
 				System.out.println("public bigdata");
 				return;
 			}
