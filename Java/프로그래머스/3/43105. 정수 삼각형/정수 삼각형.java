@@ -2,31 +2,22 @@ class Solution {
     public int solution(int[][] tri) {
         int h = tri.length;
         
-        if(h == 1){
-            return tri[0][0];
-        }
+        if(h == 1) return tri[0][0];
         
-        // 각 리프 노드까지 최대 합 계산
         for(int i = 1; i < h; i++){
-            for(int j = 0; j < tri[i].length; j++){
-                if(j == 0){
+            for(int j = 0; j < i+1; j++){
+                if(j == 0) // i번째 행 제일 왼쪽
                     tri[i][j] += tri[i-1][j];
-                    continue;
-                }
-                if(j == i){
+                else if(j == i) // i번째 행 제일 오른쪽
                     tri[i][j] += tri[i-1][j-1];
-                    continue;
-                }
-                tri[i][j] += Math.max(tri[i-1][j], tri[i-1][j-1]);
+                else
+                    tri[i][j] += Math.max(tri[i-1][j], tri[i-1][j-1]);
             }
         }
         
-        // 구한 합들 중 최대값 찾기
-        h -= 1;
-        int max = tri[h][0];
-        for(int i = 1; i < tri[h].length; i++){
-            max = Math.max(max, tri[h][i]);
-        }
+        int max = 0;
+        for(int i = 0; i < h; i++)
+            max = Math.max(max, tri[h-1][i]);
         return max;
     }
 }
