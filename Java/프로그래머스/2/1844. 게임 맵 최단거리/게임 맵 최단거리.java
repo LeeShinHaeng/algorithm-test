@@ -2,39 +2,35 @@ import java.util.*;
 
 class Solution {
     public int solution(int[][] maps) {
-        int rows = maps.length;
-        int cols = maps[0].length;
-        boolean[][] visited = new boolean[rows][cols];
-        int[] dx = {1, 0, -1, 0};
-        int[] dy = {0, 1, 0, -1};
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
         
-        Queue<int[]> queue = new LinkedList<>();
-        queue.offer(new int[] {0, 0, 1});
+        int r = maps.length;
+        int c = maps[0].length;
+        boolean[][] visited = new boolean[r][c];
+        
+        Queue<int[]> q = new ArrayDeque<>();
+        q.add(new int[]{0, 0, 1});
         visited[0][0] = true;
-        
-        while (!queue.isEmpty()) {
-            int[] current = queue.poll();
-            int x = current[0];
-            int y = current[1];
-            int depth = current[2];
 
-            if (x == rows - 1 && y == cols - 1) {
-                return depth;
-            }
-
+        while (!q.isEmpty()) {
+            int[] cur = q.poll();
+            int x = cur[0], y = cur[1], dist = cur[2];
+            
+            if (x == r - 1 && y == c - 1) 
+                return dist;
+            
             for (int i = 0; i < 4; i++) {
                 int nx = x + dx[i];
                 int ny = y + dy[i];
                 
-                if (nx >= 0 && nx < rows && 
-                    ny >= 0 && ny < cols && 
-                    maps[nx][ny] == 1 && !visited[nx][ny]) {
+                if (nx >= 0 && nx < r && ny >= 0 && ny < c && !visited[nx][ny] && maps[nx][ny] == 1) {
                     visited[nx][ny] = true;
-                    queue.offer(new int[] {nx, ny, depth + 1});
+                    q.add(new int[]{nx, ny, dist + 1});
                 }
             }
         }
-
+        
         return -1;
     }
 }
