@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -41,11 +43,6 @@ public class Main {
 			sb.append(l).append(" ");
 
 		System.out.println(sb);
-
-//		Queue<Integer> pq = new PriorityQueue<>(result);
-//		for (Integer i : pq) 
-//			sb.append(i).append(" ");
-//		System.out.println(sb);
 	}
 
 	private static void init() {
